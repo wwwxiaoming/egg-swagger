@@ -1,0 +1,158 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger2.0Api"
+  },
+  "host": "127.0.0.1:7002",
+  "basePath": "/",
+  "tags": [{
+    "name": "测试swagger",
+    "description": "测试swagger备注"
+  }, {
+    "name": "测试swagger2",
+    "description": "测试swagger2备注"
+  }],
+  "schemes": ["http", "https"],
+  "paths": {
+    "/test_swagger": {
+      "post": {
+        "tags": ["测试swagger"],
+        "summary": "用户列表",
+        "description": "",
+        "operationId": "index",
+        "produces": ["*/*"],
+        "consumes": ["*/*"],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/HomeControllerindex"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Your request was rejected"
+          },
+          "404": {
+            "description": "404Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [{
+          "api_key": []
+        }, {
+          "api_key2": []
+        }]
+      }
+    },
+    "/test_swagger2": {
+      "post": {
+        "tags": ["测试swagger2"],
+        "summary": "用户列表",
+        "description": "",
+        "operationId": "index2",
+        "produces": ["*/*"],
+        "consumes": ["*/*"],
+        "parameters": [{
+          "name": "token",
+          "in": "header",
+          "required": false,
+          "type": "string"
+        }, {
+          "in": "body",
+          "name": "body",
+          "description": "",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/HomeControllerindex2"
+          }
+        }, {
+          "in": "query",
+          "name": "token",
+          "required": true
+        }, {
+          "in": "query",
+          "name": "token2",
+          "required": false
+        }],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Your request was rejected"
+          },
+          "404": {
+            "description": "404Not Found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [{
+          "api_key": []
+        }, {
+          "api_key2": []
+        }]
+      }
+    }
+  },
+  "definitions": {
+    "HomeControllerindex": {
+      "type": "object",
+      "properties": {
+        "string": {
+          "type": "string",
+          "format": "string"
+        },
+        "number": {
+          "type": "number",
+          "format": "number"
+        },
+        "array": {
+          "type": "array",
+          "format": "array",
+          "xml": {
+            "name": "array",
+            "wrapped": true
+          },
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "xml": "HomeControllerindex"
+    },
+    "HomeControllerindex2": {
+      "type": "object",
+      "properties": {
+        "string2": {
+          "example": "abc",
+          "type": "string"
+        }
+      },
+      "xml": "HomeControllerindex2"
+    }
+  },
+  "tagsCaches": ["api"],
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    },
+    "api_key2": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}
